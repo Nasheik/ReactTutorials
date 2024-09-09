@@ -4,9 +4,9 @@
 *********/
 
 import {GraphQLClient, gql} from 'graphql-request'
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
 
-const graphqlAPI = NEXT_PUBLIC_GRAPHCMS_ENDPOINT; 
+const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT; 
 
 export default async function comments(req, res) {
   const {name, email, slug, comment} = req.body;
@@ -23,6 +23,11 @@ export default async function comments(req, res) {
     }
   `;
 
-  const result = await graphQLClient.request(query, req.body);
-  return res.status(200).send(result);
+  try{
+    const result = await graphQLClient.request(query, req.body);
+    return res.status(200).send(result);
+  } catch(e) {
+    console.log(e)
+    return res.status(500).send(e);
+  }
 }

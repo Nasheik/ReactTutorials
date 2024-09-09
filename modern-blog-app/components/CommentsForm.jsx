@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { submitComment } from '../services';
 
 const CommentsForm = ({slug}) => {
 
@@ -11,9 +12,15 @@ const CommentsForm = ({slug}) => {
   const emailElement = useRef();
   const storeDataElement = useRef();
 
+  useEffect(()=>{
+    setLocalStorage(window.localStorage);
+    nameElement.current.value = window.localStorage.getItem('name');
+    emailElement.current.value = window.localStorage.getItem('email');
+  }, []);
+
   const handleCommentSubmission=()=>{
     setError(false);
-
+    
     const { value: comment } = commentElement.current;
     const { value: name } = nameElement.current;
     const { value: email } = emailElement.current;
@@ -33,6 +40,14 @@ const CommentsForm = ({slug}) => {
       localStorage.removeItem('name', name)
       localStorage.removeItem('email', email)
     }
+    // console.log("yooo")
+
+    submitComment(commentObj).then((res)=>{
+      setShowSuccessMessage(true);
+      setTimeout(()=>{
+        setShowSuccessMessage(false);
+      }, 3000);
+    })
   }
 
   return (
@@ -41,7 +56,7 @@ const CommentsForm = ({slug}) => {
       <div className='grid grid-cols-1 gap-4 mb-4'>
         <textarea ref={commentElement} 
         className='p-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700'
-        placeholder='Comment'
+        placeholder='Leave a Reply'
         name='Comment'
         />
       </div>

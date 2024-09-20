@@ -8,9 +8,11 @@ import { Gutter } from '../../Gutter'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/payload/payload-types'
+import { Button } from '../../Button'
 
 const FooterComponent = ({footer} : {footer:Footer}) => {
   const pathname = usePathname()
+  const navItems = footer?.navItems || []
 
   return (
     <footer className={noHeaderFooterUrls.includes(pathname)?classes.hide : ''}>
@@ -33,6 +35,18 @@ const FooterComponent = ({footer} : {footer:Footer}) => {
                 <Image src="/logo-white.svg" alt='logo' width={170} height={50}/>
               </Link>
               <p>{footer.copyright}</p>
+
+              <div className={classes.socialLinks}>
+                {navItems.map((item)=>{
+                  const icon = '';
+
+                  return (
+                    <Button key={item.link.label} el="link" href={item.link.url} newTab={true} className={classes.socialLinksItem}>
+                      {item.link.label}
+                    </Button>
+                  )
+                })}
+              </div>
             </div>
           </Gutter>
       </div>

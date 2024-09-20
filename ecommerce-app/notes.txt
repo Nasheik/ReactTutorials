@@ -1,5 +1,10 @@
 npm run dev
 
+Schema:
+payload-types.ts
+collection/...(.)ts
+
 --If changes are made to schema or types -> run these two lines
-yarn generate:types
+
 yarn payload generate:graphQLSchema
+yarn generate:types

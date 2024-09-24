@@ -1,0 +1,19 @@
+npx create-next-app@latest
+npx shadcn-ui@latest init
+npm run dev
+
+
+React Icons:
+npm install react-icons
+https://react-icons.github.io/react-icons/
+
+
+
+Dark Theme:
+https://ui.shadcn.com/docs/dark-mode/next
+
+
+UI Prefabs:
+https://ui.aceternity.com/
+    Nav-bar: https://ui.aceternity.com/components/navbar-menu
+    BentoGrid: https://ui.aceternity.com/components/bento-grid

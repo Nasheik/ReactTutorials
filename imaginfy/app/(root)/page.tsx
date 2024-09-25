@@ -5,12 +5,6 @@ const Home = () => {
   return (
     <div>
       <p>Home</p>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
     </div>
   );
 };

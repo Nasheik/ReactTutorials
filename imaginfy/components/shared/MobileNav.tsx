@@ -4,9 +4,10 @@ import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 import Image from "next/image";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { navLinks } from "@/constants";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -52,13 +53,15 @@ const MobileNav = () => {
                           isActive && "gradient-text"
                         } p-18 flex whitespace-nowrap text-dark-700`}
                       >
-                        <Link className="sidebar-link" href={link.route}>
+                        <Link
+                          className="sidebar-link cursor-pointer"
+                          href={link.route}
+                        >
                           <Image
                             src={link.icon}
                             alt="logo"
                             width={24}
                             height={24}
-                            className={`${isActive && "brightness-200"}`}
                           />
                           {link.label}
                         </Link>
@@ -70,6 +73,11 @@ const MobileNav = () => {
             </SheetContent>
           </Sheet>
         </SignedIn>
+        <SignedOut>
+          <Button asChild className="button bg-purple-gradient bg-cover">
+            <Link href="/sign-in">Login</Link>
+          </Button>
+        </SignedOut>
       </nav>
     </header>
   );

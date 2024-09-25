@@ -17,3 +17,7 @@ UI Prefabs:
 https://ui.aceternity.com/
     Nav-bar: https://ui.aceternity.com/components/navbar-menu
     BentoGrid: https://ui.aceternity.com/components/bento-grid
+
+
+MongoDB:
+npm install monogodb mongoose

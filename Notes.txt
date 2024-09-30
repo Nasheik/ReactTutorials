@@ -21,3 +21,7 @@ https://ui.aceternity.com/
 
 MongoDB:
 npm install monogodb mongoose
+
+
+Shadcn Form:
+https://ui.shadcn.com/docs/components/form
